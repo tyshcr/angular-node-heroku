@@ -14,7 +14,7 @@ router.get('/api/list', (req, res, next) => {
           console.log(err);
           return res.status(500).send('Failed to GET from database')
       } else {
-          // console.log(result)
+          console.log(result)
           return res.json(result);
       };
   });

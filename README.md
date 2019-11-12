@@ -24,7 +24,24 @@ Angular CLI 8.3.18
 1. Add the new file as middleware in
 
 ## Initial Setup
+
+**Install Node & NPM**
+Download the installer from [Node.js Website](https://nodejs.org/en/). This will install both Node and NPM.
+
+To check your versions:
+```sh
+node -v
+npm -v
 ```
+
+**Install Angular CLI**
+```sh
+npm install -g @angular/cli
+```
+[Angular CLI Website](https://cli.angular.io)
+
+**Run NPM Install on the repo**
+```sh
 cd my/local/directory
 npm install
 ```
@@ -43,16 +60,32 @@ Use JawsDB
 
 **To run your MySQL database locally**
 Mac:
+1. [Install Homebrew](https://brew.sh)
 1. Install MySQL `brew install mysql`
 1. Install Brew Services `brew tap homebrew/services`
 1. Start MySQL `brew services start mysql`
 Related Resources:
 - [Homebrew](https://brew.sh)
 - [Using Brew Services](https://thoughtbot.com/blog/starting-and-stopping-background-services-with-homebrew)
+- [How to Reset MySQL Root Password](http://www.ihp.sinica.edu.tw/dashboard/docs/reset-mysql-password.html)
 
 Other Platforms:
 - [MySQL Homepage](https://dev.mysql.com)
 - [MySQL on Windows](https://dev.mysql.com/doc/refman/8.0/en/windows-installation.html)
+
+If you get errors when calling the Node API that say `ER_NOT_SUPPORTED_AUTH_MODE: Client does not support authentication protocol...`
+```SQL
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'newrootpassword';
+
+FLUSH PRIVILEGES;
+```
+
+**Create and Use Your 'heroku' Database**
+```SQL
+CREATE DATABASE heroku;
+
+USE heroku;
+```
 
 **Create Your 'test' Table**
 ```SQL
@@ -77,7 +110,6 @@ INSERT INTO `test` (`id`,`value`) VALUES (9,'frog');
 INSERT INTO `test` (`id`,`value`) VALUES (10,'bird');
 INSERT INTO `test` (`id`,`value`) VALUES (11,'elephant');
 ```
-
 
 ## Running Servers Locally
 This boilerplate uses scripts to start the local Angular UI, Node/Express API ...

@@ -19,3 +19,5 @@ require('./api/routes/list')
 
 // Start the api on port 8080
 app.listen(process.env.PORT || 8080)
+
+console.log("API is running at http://localhost:8080")
