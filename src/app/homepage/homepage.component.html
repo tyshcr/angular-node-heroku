@@ -1,10 +1,12 @@
 <div *ngIf="list" class="row mx-2">
   <div *ngFor="let listitem of list" class="card col-md-4 col-lg-3 px-0 mb-3 mb-sm-0">
     <div class="card-header">{{listitem.value}}</div>
-    <div class="card-body">Bacon ipsum dolor amet corned beef drumstick capicola ham hock sirloin short loin</div>
+    <div class="card-body">{{listitem.description}}</div>
     <div class="card-footer">
-      <div class="float-left">left</div>
-      <div class="float-right">right</div>
+      <div class="float-left">
+        <span [ngClass]="[listitem.status == 1? 'dot-green' : 'dot-red' ]"></span>
+      </div>
+      <div class="float-right">100%</div>
     </div>
   </div>
 </div>
