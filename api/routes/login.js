@@ -20,7 +20,8 @@ router.post('/api/login/', (req, res, next) => {
             if (updateerr) {
               return res.status(500).send('Failed to UPDATE database')
             } else {
-              return res.json(updateresult);
+              const response = { 'token': token }
+              return res.json(response);
             }
           });
         } else {
