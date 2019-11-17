@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { ApiService } from '../api.service'
+import { LoginResponse } from '../types/loginresponse'
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  model: any = {}
 
-  ngOnInit() {
+  constructor(
+    private apiService: ApiService,
+    private formBuilder: FormBuilder
+  ) { }
+
+  ngOnInit() { }
+
+  onSubmitLoginForm() {
+      console.log(this.model.email + " | " + this.model.password)
+      if (this.model.email && this.model.password) {
+        this.apiService
+          .postLogin(this.model)
+          .then((response: LoginResponse) => {
+            console.log(response)
+          });
+      }
   }
 
 }

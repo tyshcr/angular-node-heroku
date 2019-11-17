@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './api.service';
 import { ListService } from './list.service';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,9 +20,15 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [ListService], // add your services here
+  exports: [
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  providers: [ListService, ApiService], // add your services here
   bootstrap: [AppComponent]
 })
 export class AppModule { }
