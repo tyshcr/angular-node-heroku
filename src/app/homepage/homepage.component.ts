@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { ListService } from '../list.service';
+import { ApiService } from '../api.service';
 import { ListItem } from '../types/listitem';
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss'],
-  providers: [ ListService ]
+  providers: [ ApiService ]
 })
 export class HomepageComponent implements OnInit {
 
   list: ListItem[];
 
-  constructor(private listService: ListService) { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.listService
+    this.apiService
       .getList()
       .then((listitems: ListItem[]) => {
         this.list = listitems;
