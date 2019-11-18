@@ -118,7 +118,8 @@ CREATE TABLE `user` (
   `firstname` VARCHAR(45) NULL,
   `lastname` VARCHAR(45) NULL,
   `email` VARCHAR(100) NULL,
-  `password` VARCHAR(45) NULL,
+  `password` VARCHAR(100) NULL,
+  `token` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
 ```
@@ -126,7 +127,7 @@ CREATE TABLE `user` (
 ```SQL
 INSERT INTO `user`
 SET `email` = 'email@something.com',
-    `password` = '$2y$10$5Kbn3DtyfYrVUytDQp/WzeMxkHbzVjjbw3jsw7pcnMRI5mEUZ61By'
+    `password` = '$2y$10$5Kbn3DtyfYrVUytDQp/WzeMxkHbzVjjbw3jsw7pcnMRI5mEUZ61By';
 ```
 
 This password value is hashed using bcrypt. You can then use `abc123` as your password, to login with this user.

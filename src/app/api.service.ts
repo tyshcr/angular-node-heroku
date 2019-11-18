@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ListItem } from './types/listitem';
+import { LoginResponse } from './types/loginresponse'
 import { HttpClientModule, HttpClient, HttpResponse } from '@angular/common/http';
 import { environment } from '../environments/environment'
 @Injectable({
@@ -9,6 +10,7 @@ import { environment } from '../environments/environment'
 export class ApiService {
 
   private listUrl = environment.apiHost + 'api/list'
+  private loginUrl = environment.apiHost + 'api/login'
 
   constructor(private http: HttpClient) {}
 
