@@ -93,10 +93,10 @@ CREATE TABLE `test` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `value` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ```
 
-**MySQL Sample Data**
+**MySQL Sample Data for 'test' Table**
 ```SQL
 INSERT INTO `test` (`id`,`value`) VALUES (1,'dog');
 INSERT INTO `test` (`id`,`value`) VALUES (2,'cat');
@@ -109,6 +109,18 @@ INSERT INTO `test` (`id`,`value`) VALUES (8,'bear');
 INSERT INTO `test` (`id`,`value`) VALUES (9,'frog');
 INSERT INTO `test` (`id`,`value`) VALUES (10,'bird');
 INSERT INTO `test` (`id`,`value`) VALUES (11,'elephant');
+```
+
+**Create Your 'user' Table**
+```SQL
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `lastname` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  `password` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ```
 
 ## Running Servers Locally
