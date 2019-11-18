@@ -21,6 +21,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() { }
 
+  switchDisplay() {
+    this.showLogin = !this.showLogin
+  }
+
   onSubmitLoginForm() {
       this.loginAlert = false
       console.log(this.model.email + " | " + this.model.password)
