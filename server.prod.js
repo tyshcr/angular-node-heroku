@@ -9,6 +9,9 @@ app.use(bodyParser.json())
 app.use(require('./api/routes/list'))
 require('./api/routes/list')
 
+app.use(require('./api/routes/login'))
+require('./api/routes/login')
+
 //
 //
 app.get('/*all', function(req, res) {

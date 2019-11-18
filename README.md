@@ -91,9 +91,9 @@ USE heroku;
 ```SQL
 CREATE TABLE `test` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `value` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `value` varchar(45) NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 ```
 
 **MySQL Sample Data for 'test' Table**
@@ -114,14 +114,22 @@ INSERT INTO `test` (`id`,`value`) VALUES (11,'elephant');
 **Create Your 'user' Table**
 ```SQL
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `lastname` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  `password` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `firstname` VARCHAR(45) NULL,
+  `lastname` VARCHAR(45) NULL,
+  `email` VARCHAR(100) NULL,
+  `password` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
 ```
+
+```SQL
+INSERT INTO `user`
+SET `email` = 'email@something.com',
+    `password` = '$2y$10$5Kbn3DtyfYrVUytDQp/WzeMxkHbzVjjbw3jsw7pcnMRI5mEUZ61By'
+```
+
+This password value is hashed using bcrypt. You can then use `abc123` as your password, to login with this user.
 
 ## Running Servers Locally
 This boilerplate uses scripts to start the local Angular UI, Node/Express API ...
