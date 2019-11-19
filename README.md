@@ -143,4 +143,4 @@ This boilerplate uses scripts to start the local Angular UI, Node/Express API ..
 - You should be able to connect directly to your MySQL Database using [MySQL Workbench](https://www.mysql.com/products/workbench/) or another database tool
 
 ## Running on Heroku
-- When you deploy to Heroku
+- When you deploy to Heroku...
