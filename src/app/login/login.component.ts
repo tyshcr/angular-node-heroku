@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
 
   onSubmitLoginForm() {
       this.loginAlert = false
-      console.log("app ts:" + this.model.email + " | " + this.model.password)
       if (this.model.email && this.model.password) {
         this.apiService
           .postLogin(this.model)

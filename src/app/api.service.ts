@@ -14,7 +14,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  // -- Get the entire 'list' table
+  // -- GET the entire 'list' table
   getList(): Promise<void | ListItem[]> {
     // let token = this.accessToken
     // let options = { headers: { 'Authorization': token }}
@@ -25,8 +25,8 @@ export class ApiService {
                .catch(null); // handle error
   }
 
+  // -- POST to request login credentials 
   public postLogin(body: any): Promise<void | LoginResponse> {
-    console.log("loginUrl: " + this.loginUrl)
     // let body = new HttpParams() // not needed when 'body' is a function parameter
     // body = body.set('client_id', env.client_id) // you can manipulate 'body' like this
     // body = body.set('client_secret', env.client_secret)
