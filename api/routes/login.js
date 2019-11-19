@@ -20,15 +20,17 @@ router.post('/api/login/', (req, res, next) => {
     //     console.log(hash)
     // });
     //
+    console.log("query ran")
       if (err) {
+        console.log("query ran err")
         return res.status(500).send('Failed to SELECT from database')
       } else {
-      
+        console.log("query ran success")
         if (result.length == 1 && result[0].password && bcrypt.compareSync(req.body.password, result[0].password)) {
           const hat = require('hat');
           const token = hat();
           const update = "UPDATE user SET token = '"+token+"' WHERE id = "+result[0].id+" LIMIT 1;";
-
+          console.log(update)
           connection.query(update, (updateerr, updateresult) => {
             if (updateerr) {
               return res.status(500).send('Failed to UPDATE database')

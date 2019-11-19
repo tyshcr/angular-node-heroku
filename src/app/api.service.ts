@@ -26,6 +26,7 @@ export class ApiService {
   }
 
   public postLogin(body: any): Promise<void | LoginResponse> {
+    console.log("loginUrl: " + this.loginUrl)
     // let body = new HttpParams() // not needed when 'body' is a function parameter
     // body = body.set('client_id', env.client_id) // you can manipulate 'body' like this
     // body = body.set('client_secret', env.client_secret)
