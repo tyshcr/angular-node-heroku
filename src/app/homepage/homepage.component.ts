@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ListService } from '../list.service';
+import { AuthService } from '../auth.service';
 import { ListItem } from '../types/listitem';
 
 @Component({
@@ -10,16 +11,21 @@ import { ListItem } from '../types/listitem';
 })
 export class HomepageComponent implements OnInit {
 
-  list: ListItem[];
+  // list: ListItem[];
+  displayToken: string
 
-  constructor(private listService: ListService) { }
+  constructor(
+    private authService: AuthService,
+    private listService: ListService
+  ) { }
 
   ngOnInit() {
-    this.listService
-      .getList()
-      .then((listitems: ListItem[]) => {
-        this.list = listitems;
-      });
+    this.displayToken = this.authService.getToken()
+    // this.listService
+    //   .getList()
+    //   .then((listitems: ListItem[]) => {
+    //     this.list = listitems;
+    //   });
   }
 
 }

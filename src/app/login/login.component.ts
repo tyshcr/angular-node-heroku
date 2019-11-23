@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+
 import { ApiService } from '../api.service'
+import { AuthService } from '../auth.service'
+
 import { LoginResponse } from '../types/loginresponse'
 
 @Component({
@@ -16,6 +19,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
+    private authService: AuthService,
     private formBuilder: FormBuilder
   ) { }
 
@@ -23,6 +27,10 @@ export class LoginComponent implements OnInit {
 
   switchDisplay() {
     this.showLogin = !this.showLogin
+  }
+
+  forgotPassword() {
+    window.location.href = "./forgotpassword"
   }
 
   onSubmitLoginForm() {
@@ -34,6 +42,7 @@ export class LoginComponent implements OnInit {
           .then((response: LoginResponse) => {
             console.log(response)
             if (response.success && response.token) {
+              this.authService.setToken(response.token)
               window.location.href = "./homepage"
             } else {
               this.loginAlert = true
