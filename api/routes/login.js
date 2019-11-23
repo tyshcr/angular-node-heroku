@@ -5,32 +5,28 @@ const router = express.Router();
 module.exports = router;
 
 router.post('/api/login/', (req, res, next) => {
-
-  console.log(req.body.email + '||' + req.body.password)
-
   if (!req.body.email || !req.body.password) {
     return res.status(500).send('Missing Body')
   }
+
+  const email = req.body.email.toLowerCase()
+  const password = req.body.password
   const bcrypt = require('bcrypt');
-  const query = "SELECT id, password FROM user WHERE email = '"+req.body.email+"';"
-  console.log(query)
+  const query = "SELECT id, password FROM user WHERE email = '"+email+"';"
 
   connection.query(query, null, (err, result) => {
       if (err) {
         return res.status(500).send('Failed to SELECT from database')
       } else {
-        console.log('result :'+result.length)
-
-        if (result.length == 1 && result[0].password && bcrypt.compareSync(req.body.password, result[0].password)) {
+        if (result.length == 1 && result[0].password && bcrypt.compareSync(password, result[0].password)) {
           const hat = require('hat');
           const token = hat();
           const update = "UPDATE user SET token = '"+token+"' WHERE id = "+result[0].id+" LIMIT 1;";
-
           connection.query(update, (updateerr, updateresult) => {
             if (updateerr) {
               return res.status(500).send('Failed to UPDATE database')
             } else {
-              const response = { 'success':true, 'token': token }
+              const response = { 'success': true, 'token': token }
               return res.json(response);
             }
           });
