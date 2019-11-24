@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { RegisterResponse } from './types/registerresponse';
 import { LoginResponse } from './types/loginresponse';
 // import { Observable } from "rxjs";
 import { HttpClientModule, HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
@@ -10,6 +11,7 @@ import { environment } from '../environments/environment'
 
 export class ApiService {
 
+  private registerUrl = environment.apiHost + 'api/register'
   private loginUrl = environment.apiHost + 'api/login'
 
   constructor(private http: HttpClient) {}
@@ -35,6 +37,13 @@ export class ApiService {
   //     // console.log("error")
   //     // catchError(this.handleError('error', data))
   //   );
+
+  public postRegister(data: any): Promise<void | LoginResponse> {
+    return this.http.post(this.registerUrl, data)
+    .toPromise()
+    .then(response => response as RegisterResponse)
+    .catch(null); // handle error
+  }
 
   public postLogin(data: any): Promise<void | LoginResponse> {
     return this.http.post(this.loginUrl, data)

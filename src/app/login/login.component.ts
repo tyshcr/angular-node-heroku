@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { ApiService } from '../api.service'
 import { AuthService } from '../auth.service'
 
+import { RegisterResponse } from '../types/registerresponse'
 import { LoginResponse } from '../types/loginresponse'
 
 @Component({
@@ -15,6 +16,8 @@ export class LoginComponent implements OnInit {
 
   model: any = {}
   loginAlert: boolean = false
+  registerGenericAlert: boolean = false
+  registerPasswordAlert: boolean = false
   showLogin: boolean = true
 
   constructor(
@@ -27,6 +30,9 @@ export class LoginComponent implements OnInit {
 
   switchDisplay() {
     this.model = {}
+    this.loginAlert = false
+    this.registerGenericAlert = false
+    this.registerPasswordAlert = false
     this.showLogin = !this.showLogin
   }
 
@@ -34,24 +40,45 @@ export class LoginComponent implements OnInit {
     window.location.href = "./forgotpassword"
   }
 
+  resetAlerts() {
+    this.loginAlert = false
+    this.registerGenericAlert = false
+    this.registerPasswordAlert = false
+  }
+
+  onSubmitRegisterForm() {
+    this.resetAlerts()
+
+    if (this.model.password !== this.model.password2) {
+      this.registerPasswordAlert = true
+    } else if (this.model.email) {
+      this.apiService
+        .postRegister(this.model)
+        .then((response: RegisterResponse) => {
+          this.onSubmitLoginForm()
+        }).catch((error) => {
+          this.registerGenericAlert = true
+        })
+    } else {
+      this.registerGenericAlert = true
+    }
+  }
+
   onSubmitLoginForm() {
-      this.loginAlert = false
-      console.log(this.model.email + " | " + this.model.password)
+      this.resetAlerts()
+
       if (this.model.email && this.model.password) {
         this.apiService
           .postLogin(this.model)
           .then((response: LoginResponse) => {
-            console.log(response)
             if (response.success && response.token) {
               this.authService.setToken(response.token)
               window.location.href = "./homepage"
             } else {
               this.loginAlert = true
-              console.log('then login alert '+ this.loginAlert)
             }
           }).catch((error) => {
             this.loginAlert = true
-            console.log('catch login alert '+ this.loginAlert)
           });
       } else {
         this.loginAlert = true

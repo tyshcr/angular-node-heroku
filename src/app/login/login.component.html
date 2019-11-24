@@ -1,11 +1,18 @@
 <div *ngIf="loginAlert" class="alert alert-danger" role="alert">
   <strong>Error</strong> Your username and password were incorrect.
 </div>
+<div *ngIf="registerGenericAlert" class="alert alert-danger" role="alert">
+  <strong>Error</strong> There was a problem creating your account.
+</div>
+<div *ngIf="registerPasswordAlert" class="alert alert-danger" role="alert">
+  <strong>Error</strong> Your passwords did not match.
+</div>
+
 <div class="login-page">
   <div class="form">
     <form *ngIf="!showLogin" class="register-form" name="registerForm" (ngSubmit)="onSubmitRegisterForm()">
       <input type="text" name="email" [(ngModel)]="model.email" #email="ngModel" placeholder="email@company.com"/>
-      <input type="password" name="password1" [(ngModel)]="model.password1" #password1="ngModel" placeholder="password"/>
+      <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" placeholder="password"/>
       <input type="password" name="password2" [(ngModel)]="model.password2" #password2="ngModel" placeholder="confirm password"/>
       <button type="submit">register</button>
       <p class="message">Already registered? <span class="btn-link" (click)="switchDisplay()">Sign In</span></p>
