@@ -3,13 +3,12 @@
 </div>
 <div class="login-page">
   <div class="form">
-    <form *ngIf="!showLogin" class="register-form">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
+    <form *ngIf="!showLogin" class="register-form" name="registerForm" (ngSubmit)="onSubmitRegisterForm()">
+      <input type="text" name="email" [(ngModel)]="model.email" #email="ngModel" placeholder="email@company.com"/>
+      <input type="password" name="password1" [(ngModel)]="model.password1" #password1="ngModel" placeholder="password"/>
+      <input type="password" name="password2" [(ngModel)]="model.password2" #password2="ngModel" placeholder="confirm password"/>
+      <button type="submit">register</button>
       <p class="message">Already registered? <span class="btn-link" (click)="switchDisplay()">Sign In</span></p>
-
     </form>
     <form *ngIf="showLogin" class="login-form" name="loginForm" (ngSubmit)="onSubmitLoginForm()">
       <input type="text" name="email" [(ngModel)]="model.email" #email="ngModel" placeholder="email@company.com"/>

@@ -16,6 +16,8 @@ app.use(function(req, res, next) {
 app.use(require('./api/routes/login'))
 require('./api/routes/login')
 
+app.use(require('./api/routes/register'))
+require('./api/routes/register')
 
 // Start the api on port 8080
 app.listen(process.env.PORT || 8080)

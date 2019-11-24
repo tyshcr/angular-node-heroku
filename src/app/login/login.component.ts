@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() { }
 
   switchDisplay() {
+    this.model = {}
     this.showLogin = !this.showLogin
   }
 
