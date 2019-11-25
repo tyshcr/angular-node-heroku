@@ -19,10 +19,6 @@ Angular CLI 8.3.18
 - Your UI and API should each auto-restart when code changes are saved
 - When running locally, you may setup a local MySQL database (change settings in `/api/connection.js` ) or you can [connect to your JawsDB locally](https://devcenter.heroku.com/articles/jawsdb#local-setup)
 
-## Adding new API Endpoint
-1. Create a new file in the `/api/routes/` directory
-1. Add the new file as middleware in
-
 ## Initial Setup
 
 **Install Node & NPM**
@@ -49,16 +45,31 @@ npm install
 ## Create a Heroku App
 1. Create a [Heroku](https://www.heroku.com) account
 1. Create your a new app on Heroku
-1. Link your local repo to Heroku by following the instructions that are presented after you create your app on Heroku
-1. Once your Heroku app is setup and linked, you can deploy your repo to Heroku using `git push heroku master`
+1. Link your local repo to Heroku by following the instructions that are presented after you create your app on Heroku:
+```bash
+$ cd my-project/
+$ git init
+$ heroku git:remote -a yourherokuappname
+```
+1. Once your Heroku app is setup and linked, you can deploy your repo to Heroku using `git push heroku master` or `git push heroku mycurrentbranch:master`. You can add the `-f` command to force-push, if needed.
 
 ## MySQL Database
 **To run your MySQL Database on Heroku**
 Use JawsDB
 1. Go to the [JawsDB Homepage](https://elements.heroku.com/addons/jawsdb)
 1. Click the `Install JawsDB MySQL` button
+1. Type your Heroku App's name in the `App to provision to` box
+1. Click the `Provision add-on` button
 
-**To run your MySQL database locally**
+**To connect to your JawsDB from your local machine**
+You will need to do this in order to add the necessary tables to your JawsDB
+1. Open your Heroku App's profile on the Heroku website
+1. Click the `Resources` tab
+1. Click the `JawsDB MySQL` link on the `Resources` tab. This will open a new tab in your browser.
+1. Use the host, usermane, and password on this `JawsDB` page to connect to your JawsDB, using a tool such as [MySQL Workbench](https://dev.mysql.com)
+
+
+**To run a MySQL database locally**
 Mac:
 1. [Install Homebrew](https://brew.sh)
 1. Install MySQL `brew install mysql`
@@ -142,5 +153,8 @@ This boilerplate uses scripts to start the local Angular UI, Node/Express API ..
 - You should be able to make a GET request to your Node/Express API at `http://localhost:8080/api/list`
 - You should be able to connect directly to your MySQL Database using [MySQL Workbench](https://www.mysql.com/products/workbench/) or another database tool
 
-## Running on Heroku
-- When you deploy to Heroku
+## Development Notes
+
+### Adding new API Endpoint
+1. Create a new file in the `/api/routes/` directory
+1. Add the new file as middleware in
