@@ -1,36 +1,29 @@
 import { Injectable } from '@angular/core';
-import { ListItem } from './types/listitem';
-import { LoginResponse } from './types/loginresponse'
-import { HttpClientModule, HttpClient, HttpResponse } from '@angular/common/http';
+
+import { RegisterResponse } from './types/registerresponse';
+import { LoginResponse } from './types/loginresponse';
 import { environment } from '../environments/environment'
+import { HttpClientModule, HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class ApiService {
-
-  private listUrl = environment.apiHost + 'api/list'
+  private registerUrl = environment.apiHost + 'api/register'
   private loginUrl = environment.apiHost + 'api/login'
 
   constructor(private http: HttpClient) {}
 
-  // -- GET the entire 'list' table
-  getList(): Promise<void | ListItem[]> {
-    // let token = this.accessToken
-    // let options = { headers: { 'Authorization': token }}
-    // return this.http.get(this.listUrl, options) ...
-    return this.http.get(this.listUrl)
-               .toPromise()
-               .then(response => response as ListItem[])
-               .catch(null); // handle error
+  public postRegister(data: any): Promise<void | RegisterResponse> {
+    return this.http.post(this.registerUrl, data)
+    .toPromise()
+    .then(response => response as RegisterResponse)
+    .catch(null); // handle error
   }
 
-  // -- POST to request login credentials 
-  public postLogin(body: any): Promise<void | LoginResponse> {
-    // let body = new HttpParams() // not needed when 'body' is a function parameter
-    // body = body.set('client_id', env.client_id) // you can manipulate 'body' like this
-    // body = body.set('client_secret', env.client_secret)
-    return this.http.post(this.loginUrl, body)
+  public postLogin(data: any): Promise<void | LoginResponse> {
+    return this.http.post(this.loginUrl, data)
     .toPromise()
     .then(response => response as LoginResponse)
     .catch(null); // handle error

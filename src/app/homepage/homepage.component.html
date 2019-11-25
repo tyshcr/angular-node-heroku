@@ -1,13 +1,14 @@
-<div *ngIf="list" class="row mx-2">
+Token: {{ displayToken }}
+
+<!-- <div *ngIf="list" class="row mx-2">
   <div *ngFor="let listitem of list" class="card col-md-4 col-lg-3 px-0 mb-3 mb-sm-0">
-    <div class="card-header">
-      {{listitem.value}}
-    </div>
-    <div class="card-body">
-      {{listitem.value}} lorem ipsum bacon dolor lorem ipsum bacon dolor lorem ipsum bacon dolor lorem ipsum bacon dolor
-    </div>
+    <div class="card-header">{{listitem.value}}</div>
+    <div class="card-body">{{listitem.description}}</div>
     <div class="card-footer">
-      footer
+      <div class="float-left">
+        <span [ngClass]="[listitem.status == 1? 'dot-green' : 'dot-red' ]"></span>
+      </div>
+      <div class="float-right">100%</div>
     </div>
   </div>
-</div>
+</div> -->

@@ -69,7 +69,7 @@ You will need to do this in order to add the necessary tables to your JawsDB
 1. Use the host, usermane, and password on this `JawsDB` page to connect to your JawsDB, using a tool such as [MySQL Workbench](https://dev.mysql.com)
 
 
-**To run a MySQL database locally**
+**To run a MySQL database on Your Local Machine**
 Mac:
 1. [Install Homebrew](https://brew.sh)
 1. Install MySQL `brew install mysql`
@@ -91,7 +91,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'newrootp
 FLUSH PRIVILEGES;
 ```
 
-**Create and Use Your 'heroku' Database**
+**Create and Use Your 'heroku' Database (Only Necessary on Your Local Machine)**
 ```SQL
 CREATE DATABASE heroku;
 
@@ -132,7 +132,6 @@ CREATE TABLE `user` (
   `password` VARCHAR(100) NULL,
   `token` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
-
 ```
 
 ```SQL

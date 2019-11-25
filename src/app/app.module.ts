@@ -21,7 +21,9 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ApiService], // add your services here
   bootstrap: [AppComponent]

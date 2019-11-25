@@ -12,6 +12,9 @@ require('./api/routes/list')
 app.use(require('./api/routes/login'))
 require('./api/routes/login')
 
+app.use(require('./api/routes/register'))
+require('./api/routes/register')
+
 //
 //
 app.get('/*all', function(req, res) {
