@@ -65,24 +65,24 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitLoginForm() {
-      this.resetAlerts()
+    this.resetAlerts()
 
-      if (this.model.email && this.model.password) {
-        this.apiService
-          .postLogin(this.model)
-          .then((response: LoginResponse) => {
-            if (response.success && response.token) {
-              this.authService.setToken(response.token)
-              window.location.href = "./homepage"
-            } else {
-              this.loginAlert = true
-            }
-          }).catch((error) => {
+    if (this.model.email && this.model.password) {
+      this.apiService
+        .postLogin(this.model)
+        .then((response: LoginResponse) => {
+          if (response.success && response.token) {
+            this.authService.setToken(response.token)
+            window.location.href = "./homepage"
+          } else {
             this.loginAlert = true
-          });
-      } else {
-        this.loginAlert = true
-      }
+          }
+        }).catch((error) => {
+          this.loginAlert = true
+        });
+    } else {
+      this.loginAlert = true
+    }
   }
 
   // Observable
