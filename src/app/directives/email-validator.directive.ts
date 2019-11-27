@@ -13,7 +13,7 @@ export class EmailValidatorDirective {
   constructor() { }
 }
 
-function emailValidation(control: FormControl) {
+export function emailValidation(control: FormControl) {
     let email = control.value
     let regex = new RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)
     if (email && regex.test(email)) {
