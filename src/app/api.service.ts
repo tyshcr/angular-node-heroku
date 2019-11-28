@@ -15,15 +15,40 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  public postRegister(data: any): Promise<void | RegisterResponse> {
-    return this.http.post(this.registerUrl, data)
+  // -- Login the user
+  // postLogin(data): Promise<void | LoginResponse> {
+  //   return this.http.post(this.loginUrl, data, null)
+  //              .toPromise()
+  //              .then(response => response as ListItem[])
+  //              .catch(null); // handle error
+  // }
+
+  // postLogin(data: any): Observable<LoginResponse> {
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type':  'application/json',
+  //       'Authorization': 'my-auth-token'
+  //     })
+  //   };
+  //
+  // return this.http.post<LoginResponse>(this.loginUrl, data, httpOptions)
+  //   .pipe(
+  //     // console.log("error")
+  //     // catchError(this.handleError('error', data))
+  //   );
+
+  public postRegister(body: any): Promise<void | RegisterResponse> {
+    return this.http.post(this.registerUrl, body)
     .toPromise()
     .then(response => response as RegisterResponse)
     .catch(null); // handle error
   }
 
-  public postLogin(data: any): Promise<void | LoginResponse> {
-    return this.http.post(this.loginUrl, data)
+  public postLogin(body: any): Promise<void | LoginResponse> {
+    // let body = new HttpParams() // not needed when 'body' is a function parameter
+    // body = body.set('client_id', env.client_id) // you can manipulate 'body' like this
+    // body = body.set('client_secret', env.client_secret)
+    return this.http.post(this.loginUrl, body)
     .toPromise()
     .then(response => response as LoginResponse)
     .catch(null); // handle error
