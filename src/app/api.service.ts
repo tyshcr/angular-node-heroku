@@ -38,15 +38,18 @@ export class ApiService {
   //     // catchError(this.handleError('error', data))
   //   );
 
-  public postRegister(data: any): Promise<void | LoginResponse> {
-    return this.http.post(this.registerUrl, data)
+  public postRegister(body: any): Promise<void | RegisterResponse> {
+    return this.http.post(this.registerUrl, body)
     .toPromise()
     .then(response => response as RegisterResponse)
     .catch(null); // handle error
   }
 
-  public postLogin(data: any): Promise<void | LoginResponse> {
-    return this.http.post(this.loginUrl, data)
+  public postLogin(body: any): Promise<void | LoginResponse> {
+    // let body = new HttpParams() // not needed when 'body' is a function parameter
+    // body = body.set('client_id', env.client_id) // you can manipulate 'body' like this
+    // body = body.set('client_secret', env.client_secret)
+    return this.http.post(this.loginUrl, body)
     .toPromise()
     .then(response => response as LoginResponse)
     .catch(null); // handle error
