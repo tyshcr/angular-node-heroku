@@ -1,3 +1,4 @@
+@import '../../scss/variables';
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .login-page {
@@ -6,14 +7,14 @@
   margin: auto;
 }
 
-h4 {
-  color: #999;
-}
+// h4 {
+//   color: #999;
+// }
 
 .form {
   position: relative;
   z-index: 1;
-  background: #FFFFFF;
+  background: $page-background;
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
@@ -23,7 +24,7 @@ h4 {
 .form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
-  background: #f2f2f2;
+  background: $form-input-background;
   width: 100%;
   border: 0;
   margin: 0 0 15px;
@@ -35,11 +36,11 @@ h4 {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #4CAF50;
+  background: $button-background;
   width: 100%;
   border: 0;
   padding: 15px;
-  color: #FFF;
+  color: $button-text-color;
   font-size: 14px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
@@ -47,7 +48,7 @@ h4 {
   opacity: 1.0;
 }
 .form button:hover:enabled, .form button:active:enabled, .form button:focus:enabled {
-  background: #43A047;
+  background: $button-background-hover;
 }
 .form button:disabled {
   opacity: 0.5;
@@ -55,11 +56,11 @@ h4 {
 
 .form .message {
   margin: 15px 0 0;
-  color: #b3b3b3;
+  color: $text-gray;
   font-size: 12px;
 }
 .form .message .btn-link {
-  color: #4CAF50;
+  color: $link-color;
   font-size: 12px;
   text-decoration: none;
   cursor: pointer;
@@ -80,12 +81,12 @@ h4 {
   margin: 50px auto;
   text-align: center;
 }
-.container .info h1 {
+h4 {
   margin: 0 0 15px;
   padding: 0;
   font-size: 36px;
   font-weight: 300;
-  color: #1a1a1a;
+  color: $text-black;
 }
 .container .info span {
   color: #4d4d4d;
