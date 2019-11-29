@@ -11,6 +11,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
 import { EmailValidatorDirective } from './directives/email-validator.directive';
 import { PasswordValidatorDirective } from './directives/password-validator.directive';
+import { HeaderBarComponent } from './header-bar/header-bar.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PasswordValidatorDirective } from './directives/password-validator.dire
     HomepageComponent,
     LoginComponent,
     EmailValidatorDirective,
-    PasswordValidatorDirective
+    PasswordValidatorDirective,
+    HeaderBarComponent
   ],
   imports: [
     FormsModule,

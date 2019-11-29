@@ -1,0 +1,17 @@
+@import '../../scss/variables';
+
+@media (max-width: 767px) {
+    .navbar .menu a {font-size: 1.5rem; }
+}
+
+@media (min-width: 768px) {
+    .navbar .menu a {font-size: 1rem; }
+}
+
+.navbar {
+  background-color: $navbar-background-color;
+}
+
+.navbar a {
+  color: $navbar-link;
+}
