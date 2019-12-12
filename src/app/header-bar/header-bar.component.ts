@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { ApiService } from '../api.service'
 
 @Component({
   selector: 'app-header-bar',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private apiService: ApiService
+  ) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  sendEmail() {
+    console.log('calling sendemail')
+    this.apiService.getEmail()
+    window.alert("sending email")
   }
 
 }

@@ -13,6 +13,9 @@ app.use(function(req, res, next) {
 })
 
 // add more endpoints by copying this pattern
+app.use(require('./api/routes/email'))
+require('./api/routes/email')
+
 app.use(require('./api/routes/list'))
 require('./api/routes/list')
 

@@ -8,6 +8,7 @@ if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL)
 } else {
   console.log('not using JAWSDB_URL')
+  console.log('sendgrid ' + process.env.SENDGRID_API_KEY)
     connection = mysql.createConnection({
         host: (process.env.JAWSDB_HOST_4 || 'localhost'),
         user: (process.env.JAWSDB_USER_4 || 'root'),

@@ -7,6 +7,7 @@ e2e_test.*
 *.log
 node_modules
 tools/gulp-tasks/cldr/cldr-data/
+.env
 
 # Include when developing application packages.
 pubspec.lock

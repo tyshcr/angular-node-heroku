@@ -155,5 +155,18 @@ This boilerplate uses scripts to start the local Angular UI, Node/Express API ..
 ## Development Notes
 
 ### Adding new API Endpoint
-1. Create a new file in the `/api/routes/` directory
-1. Add the new file as middleware in
+1. Create a new file, such as `mynewendpoint.js` in the `/api/routes/` directory
+1. Add the new route to `server.local.js` and `server.prod.js` like this:
+```javascript
+app.use(require('./api/routes/mynewendpoint'))
+require('./api/routes/mynewendpoint')
+```
+## SendGrid
+The app is using SendGrid to send emails. You need to add your `SENDGRID_API_KEY` and your to/from email address to the `.env` file in your top-level directory
+
+.env
+```javascript
+SENDGRID_API_KEY='yoursendgridapikeyhere'
+TO_EMAIL='to@youremail.com'
+FROM_EMAIL='from@youremail.com'
+```

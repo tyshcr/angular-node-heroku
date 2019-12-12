@@ -12,6 +12,7 @@ import { HttpClientModule, HttpClient, HttpHeaders, HttpResponse } from '@angula
 export class ApiService {
   private registerUrl = environment.apiHost + 'api/register'
   private loginUrl = environment.apiHost + 'api/login'
+  private emailUrl = environment.apiHost + 'api/email'
 
   constructor(private http: HttpClient) {}
 
@@ -36,6 +37,13 @@ export class ApiService {
   //     // console.log("error")
   //     // catchError(this.handleError('error', data))
   //   );
+
+  public getEmail(): Promise<void | String> {
+    return this.http.get(this.emailUrl)
+               .toPromise()
+               .then(response => response as String)
+               .catch(null); // handle error
+  }
 
   public postRegister(body: any): Promise<void | RegisterResponse> {
     return this.http.post(this.registerUrl, body)
