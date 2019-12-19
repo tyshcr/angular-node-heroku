@@ -11,7 +11,7 @@ router.get('/api/email', (req, res, next) => {
   const msg = {
     to: process.env.TO_EMAIL,
     from: process.env.FROM_EMAIL,
-    subject: 'Email from Local SendGrid',
+    subject: 'Email from ' + process.env.ENV_NAME + ' SendGrid',
     text: 'This is the plain text',
     html: 'This is some <strong>HTML</strong> text',
   };
