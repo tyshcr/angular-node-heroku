@@ -15,6 +15,7 @@ router.get('/api/email', (req, res, next) => {
     text: 'This is the plain text',
     html: 'This is some <strong>HTML</strong> text',
   };
+  console.log(msg)
   sgMail.send(msg);
   const result = { 'success': true }
   return res.json(result);
