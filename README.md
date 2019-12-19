@@ -7,10 +7,12 @@ npm 6.4.1
 Angular CLI 8.3.18
 [Heroku](https://www.heroku.com) to run our server
 [JawsDB](https://elements.heroku.com/addons/jawsdb) for MySQL on Heroku
+[SendGrid](https://elements.heroku.com/addons/sendgrid) for sending emails from Heroku
 
 ## Heroku Notes
 - You will need a (free) [Heroku](https://www.heroku.com) account
 - This repo uses (free) [JawsDB](https://elements.heroku.com/addons/jawsdb) to run MySQL on Heroku
+- This repo uses (free) [SendGrid](https://elements.heroku.com/addons/sendgrid) to send email from Heroku
 
 ## Local Dev Notes
 - When running locally, we run the Angular UI on port 4200
@@ -164,9 +166,19 @@ require('./api/routes/mynewendpoint')
 ## SendGrid
 The app is using SendGrid to send emails. You need to add your `SENDGRID_API_KEY` and your to/from email address to the `.env` file in your top-level directory
 
+Add SendGrid to your Heroku app.
+
 .env
 ```javascript
 SENDGRID_API_KEY='yoursendgridapikeyhere'
 TO_EMAIL='to@youremail.com'
 FROM_EMAIL='from@youremail.com'
+ENV_NAME='localenv'
+```
+
+In Heroku, you need to add these values to your `Settings > Config Vars`
+```javascript
+TO_EMAIL='herokuto@email.com'
+FROM_EMAIL='herokufrom@email.com'
+ENV_NAME='HEROKU'
 ```
