@@ -15,7 +15,7 @@ export class HeaderBarComponent implements OnInit {
   ngOnInit() { }
 
   sendEmail() {
-    console.log('calling sendemail' + process.env.TO_EMAIL + process.env.FROM_EMAIL)
+    console.log('calling sendemail')
     this.apiService.getEmail()
     window.alert("sending email")
   }
