@@ -6,6 +6,9 @@ const app = express();
 app.use(bodyParser.json())
 
 // add more endpoints by copying this pattern
+app.use(require('./api/routes/email'))
+require('./api/routes/email')
+
 app.use(require('./api/routes/list'))
 require('./api/routes/list')
 
